@@ -6,91 +6,91 @@
 <title>Financial Points Counter</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Firebase SDK (Compat for browser) -->
+<!-- Firebase SDK (Compat version for browser) -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-  body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(270deg, #4B79FF, #283EAF, #00C6FF, #4B79FF);
-    background-size: 800% 800%;
-    animation: wave 15s ease infinite;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  @keyframes wave {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  header {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 20px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-    z-index: 1;
-  }
-  header h1 { font-weight: 600; color: #4B4BFF; }
-  .dot {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: floatDots linear infinite;
-  }
-  @keyframes floatDots {
-    0% { transform: translateY(100vh) translateX(0); opacity: 0.3; }
-    50% { opacity: 0.5; }
-    100% { transform: translateY(-10vh) translateX(50px); opacity: 0.3; }
-  }
-  .counter {
-    font-size: 4rem;
-    font-weight: 700;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 30px 60px;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    color: #00C6FF;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    z-index: 1;
-  }
-  .controls input[type="number"], .controls input[type="password"] {
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    text-align: center;
-  }
-  .controls button {
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    border: none;
-    background: #00C6FF;
-    color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
-  }
-  .controls button:hover { transform: scale(1.1); background: #4B79FF; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body {
+  height: 100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(270deg, #4B79FF, #283EAF, #00C6FF, #4B79FF);
+  background-size: 800% 800%;
+  animation: wave 15s ease infinite;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+@keyframes wave {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+header {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  padding: 20px 50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom:40px;
+  z-index:1;
+}
+header h1 { font-weight:600; color:#4B4BFF; }
+.dot {
+  position:absolute;
+  border-radius:50%;
+  opacity:0.3;
+  animation: floatDots linear infinite;
+}
+@keyframes floatDots {
+  0% { transform: translateY(100vh) translateX(0); opacity:0.3; }
+  50% { opacity:0.5; }
+  100% { transform: translateY(-10vh) translateX(50px); opacity:0.3; }
+}
+.counter {
+  font-size:4rem;
+  font-weight:700;
+  background: rgba(255,255,255,0.2);
+  padding: 30px 60px;
+  border-radius:20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  color:#00C6FF;
+  margin-bottom:30px;
+  text-shadow:1px 1px 5px rgba(0,0,0,0.2);
+  z-index:1;
+}
+.controls {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:15px;
+  z-index:1;
+}
+.controls input[type="number"], .controls input[type="password"] {
+  padding:10px 20px;
+  font-size:1.2rem;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  text-align:center;
+}
+.controls button {
+  padding:12px 25px;
+  font-size:1.1rem;
+  border-radius:20px;
+  border:none;
+  background:#00C6FF;
+  color:#fff;
+  cursor:pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+.controls button:hover { transform: scale(1.1); background:#4B79FF; }
 </style>
 </head>
 <body>
@@ -102,14 +102,14 @@
 <div class="counter" id="counter">0</div>
 
 <div class="controls">
-  <input type="number" id="pointsInput" placeholder="Add or subtract points (max 300)" min="-10000000000000000000000000000000000000000000000000000000000000000000000000" max="300">
+  <input type="number" id="pointsInput" placeholder="Add or subtract points (-300 to 300)" min="-300" max="300">
   <input type="password" id="passwordInput" placeholder="Enter password">
   <button onclick="addPoints()">Update Counter</button>
   <button onclick="resetCounter()">Reset Counter</button>
 </div>
 
 <script>
-  // Initialize Firebase
+  // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyBG6MbZLoY0c-up9clycwD7lT1MwimsSGA",
     authDomain: "counter-6a15a.firebaseapp.com",
@@ -126,7 +126,7 @@
   const maxPoints = 935;
   const password = "10/07";
 
-  // Listen to counter changes in Firebase
+  // Initialize and listen for changes
   counterRef.on('value', snapshot => {
     const value = snapshot.val();
     document.getElementById('counter').innerText = value !== null ? value : 0;
@@ -143,7 +143,7 @@
       if (current === null) current = 0;
       let newValue = current + change;
       if (newValue > maxPoints) newValue = maxPoints;
-      return newValue; // negative allowed infinitely
+      return newValue; // can go negative infinitely
     });
 
     document.getElementById("pointsInput").value = "";
@@ -169,18 +169,18 @@
     document.getElementById("passwordInput").value = "";
   }
 
-  // Dynamic floating dots
-  const colors = ['#FF4B6B', '#4B4BFF', '#FFB74B', '#00C6FF', '#8AFFC1'];
-  for (let i = 0; i < 30; i++) {
+  // Floating dots
+  const colors = ['#FF4B6B','#4B4BFF','#FFB74B','#00C6FF','#8AFFC1'];
+  for(let i=0;i<30;i++){
     const dot = document.createElement('div');
     dot.classList.add('dot');
-    const size = Math.random() * 20 + 5;
+    const size = Math.random()*20 + 5;
     dot.style.width = `${size}px`;
     dot.style.height = `${size}px`;
-    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
-    dot.style.left = `${Math.random() * 100}vw`;
-    dot.style.animationDuration = `${Math.random() * 10 + 5}s`;
-    dot.style.animationDelay = `${Math.random() * 5}s`;
+    dot.style.background = colors[Math.floor(Math.random()*colors.length)];
+    dot.style.left = `${Math.random()*100}vw`;
+    dot.style.animationDuration = `${Math.random()*10 + 5}s`;
+    dot.style.animationDelay = `${Math.random()*5}s`;
     document.body.appendChild(dot);
   }
 </script>
